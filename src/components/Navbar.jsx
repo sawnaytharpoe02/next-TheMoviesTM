@@ -18,7 +18,10 @@ const Navbar = ({ setMovies }) => {
       name !== ''
         ? `https://api.themoviedb.org/3/search/movie?query=${name}&api_key=e127983d3410f2900733ce87f046c848`
         : `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
-    const res = await apiCall('get', url);
+    const res = await apiCall('get', url, null, true);
+    if (res.data.results.length === 0) {
+      return setMovies(null);
+    }
     setMovies(res.data.results);
   };
 

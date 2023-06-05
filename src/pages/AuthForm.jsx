@@ -13,8 +13,8 @@ const AuthForm = () => {
 
   const onSubmit = async (data) => {
     const url = isLogin
-      ? 'http://localhost:3000/login'
-      : 'http://localhost:3000/register';
+      ? 'https://next-themoviestm-server.onrender.com/login'
+      : 'https://next-themoviestm-server.onrender.com/register';
     const res = await apiCall('post', url, {
       email: data.email,
       password: data.password,

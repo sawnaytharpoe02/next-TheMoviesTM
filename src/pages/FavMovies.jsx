@@ -8,13 +8,13 @@ const FavMovies = () => {
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
-    const url = 'http://localhost:3000/movie_favorite';
+    const url = 'https://next-themoviestm-server.onrender.com/movie_favorite';
     const response = await apiCall('get', url);
     setData(response.data);
   };
 
   const handleUnsave = async (id) => {
-    const url = `http://localhost:3000/movie_favorite/${id}`;
+    const url = `https://next-themoviestm-server.onrender.com/movie_favorite/${id}`;
     await apiCall('delete', url);
   };
 
