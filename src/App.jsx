@@ -14,11 +14,10 @@ const App = () => {
   const fetchData = async () => {
     const apiKey = 'e127983d3410f2900733ce87f046c848';
     const url = `https://api.themoviedb.org/3/movie/${movieType}?api_key=${apiKey}`;
-    const favUrl =
-      'https://next-themoviestm-server.onrender.com/movie_favorite';
+    const favUrl = 'https://next-moviestm-server.onrender.com/movie_favorite';
 
     const favorites = await apiCall('get', favUrl);
-    const response = await apiCall('get', url, null, true);
+    const response = await apiCall('get', url);
 
     const moviesWithFavorites = response.data.results.map((movie) => {
       if (favorites.data.find((eachFav) => eachFav.title === movie.title)) {

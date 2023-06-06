@@ -6,6 +6,7 @@ import { getToken } from '../utils/cache';
 
 const Layout = ({ setMovies }) => {
   const navigate = useNavigate();
+
   const check = async () => {
     const token = await getToken();
     if (!token) {
