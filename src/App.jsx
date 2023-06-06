@@ -17,7 +17,7 @@ const App = () => {
     const favUrl = 'https://next-moviestm-server.onrender.com/movie_favorite';
 
     const favorites = await apiCall('get', favUrl);
-    const response = await apiCall('get', url);
+    const response = await apiCall('get', url, null, true);
 
     const moviesWithFavorites = response.data.results.map((movie) => {
       if (favorites.data.find((eachFav) => eachFav.title === movie.title)) {
