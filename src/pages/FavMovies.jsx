@@ -8,19 +8,20 @@ const FavMovies = () => {
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
-    const url = 'https://next-moviestm-server.onrender.com/movie_favorite';
+    const url = 'http://localhost:3000/movie_favorite';
     const response = await apiCall('get', url);
     setData(response?.data);
   };
 
   const handleUnsave = async (id) => {
-    const url = `https://next-moviestm-server.onrender.com/movie_favorite/${id}`;
+    const url = `http://localhost:3000/movie_favorite/${id}`;
     await apiCall('delete', url);
+    await fetchData();
   };
 
   useEffect(() => {
     fetchData();
-  }, [handleUnsave]);
+  }, []);
 
   return (
     <div className="p-10">
@@ -47,7 +48,7 @@ const FavMovies = () => {
               <div className="card-actions justify-end">
                 <button
                   className="btn btn-primary"
-                  onClick={() => handleUnsave(row?.id)}>
+                  onClick={async () => await handleUnsave(row?.id)}>
                   Unsave
                 </button>
               </div>

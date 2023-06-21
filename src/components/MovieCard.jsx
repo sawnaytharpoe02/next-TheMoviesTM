@@ -30,7 +30,7 @@ const MovieCard = ({ movies, setMovies }) => {
       vote_count: currentMovie.vote_count,
     };
 
-    const url = 'https://next-moviestm-server.onrender.com/movie_favorite';
+    const url = 'http://localhost:3000/movie_favorite';
     const res = await apiCall('get', url);
     if (!res?.data.find((item) => item.title === currentMovie.title)) {
       await apiCall('post', url, data);
