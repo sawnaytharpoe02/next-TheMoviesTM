@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { AiFillHeart } from 'react-icons/ai';
-import { apiCall } from '../services/apiService';
+import { apiCall, backendApiUrl } from '../services/apiService';
 import { useNavigate } from 'react-router';
 
 const MovieCard = ({ movies, setMovies }) => {
@@ -30,7 +30,7 @@ const MovieCard = ({ movies, setMovies }) => {
       vote_count: currentMovie.vote_count,
     };
 
-    const url = 'http://localhost:3000/movie_favorite';
+    const url = `${backendApiUrl}/movie_favorite`;
     const res = await apiCall('get', url);
     if (!res?.data.find((item) => item.title === currentMovie.title)) {
       await apiCall('post', url, data);
