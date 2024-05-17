@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { MdOutlineArrowBackIosNew } from 'react-icons/md';
 import { useNavigate } from 'react-router';
-import { apiCall } from '../services/apiService';
+import { apiCall, backendApiUrl } from '../services/apiService';
 
 const FavMovies = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
-    const url = 'http://localhost:3000/movie_favorite';
+    const url = `${backendApiUrl}/movie_favorite`;
     const response = await apiCall('get', url);
     setData(response?.data);
   };
 
   const handleUnsave = async (id) => {
-    const url = `http://localhost:3000/movie_favorite/${id}`;
+    const url = `${backendApiUrl}/movie_favorite/${id}`;
     await apiCall('delete', url);
     await fetchData();
   };

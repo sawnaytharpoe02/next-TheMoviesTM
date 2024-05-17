@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import FavMovies from './pages/FavMovies';
 import AuthForm from './pages/AuthForm';
 import { apiCall } from './services/apiService';
+import { backendApiUrl } from './services/apiService';
 
 const App = () => {
   const [movies, setMovies] = useState(null);
@@ -14,7 +15,7 @@ const App = () => {
   const fetchData = async () => {
     const apiKey = 'e127983d3410f2900733ce87f046c848';
     const url = `https://api.themoviedb.org/3/movie/${movieType}?api_key=${apiKey}`;
-    const favUrl = 'http://localhost:3000/movie_favorite';
+    const favUrl = `${backendApiUrl}/movie_favorite`;
 
     const favorites = await apiCall('get', favUrl);
     const response = await apiCall('get', url);

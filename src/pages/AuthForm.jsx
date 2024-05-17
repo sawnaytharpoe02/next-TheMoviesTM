@@ -5,6 +5,7 @@ import { setToken } from '../utils/cache';
 import { useForm } from 'react-hook-form';
 import { AiFillEyeInvisible } from 'react-icons/ai';
 import { AiFillEye } from 'react-icons/ai';
+import { backendApiUrl } from '../services/apiService';
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -13,8 +14,8 @@ const AuthForm = () => {
 
   const onSubmit = async (data) => {
     const url = isLogin
-      ? 'http://localhost:3000/login'
-      : 'http://localhost:3000/register';
+      ? `${backendApiUrl}/login`
+      : `${backendApiUrl}/register`;
     const res = await apiCall('post', url, {
       email: data.email,
       password: data.password,
